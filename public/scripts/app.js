@@ -5,11 +5,6 @@
  *
  */
 
-
-/* hard-coded data! */
-/* end of hard-coded data */
-
-
 var template;
 var $albumsList;
 
@@ -40,8 +35,6 @@ function onSuccess(json) {
 function onError(err) {
     console.log(err);
 }
-
-
 
 // this function takes a single album and renders it to the page
 function renderAlbum(albumInput) {
