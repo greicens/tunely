@@ -35,10 +35,20 @@ sampleAlbums.push({
 /* end of hard-coded data */
 
 
-
+var template;
+var $albumsList;
 
 $(document).ready(function() {
   console.log('app.js loaded!');
+
+  $albumsList = $("#albums");
+
+  var source = $("#albums-template").html();
+  template = Handlebars.compile(source);
+  sampleAlbums.forEach(function(album){
+    renderAlbum(album);
+  })
+
 });
 
 
@@ -46,7 +56,10 @@ $(document).ready(function() {
 
 
 // this function takes a single album and renders it to the page
-function renderAlbum(album) {
-  console.log('rendering album:', album);
+function renderAlbum(albumInput) {
+  console.log('rendering album:', albumInput);
+
+  var albumHtml = template({ album: albumInput});
+  $albumsList.append(albumHtml);
 
 }
