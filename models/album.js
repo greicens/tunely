@@ -6,3 +6,7 @@ var AlbumSchema = new Schema({
   artistName: String,
   releaseDate: String
 });
+
+var Album = mongoose.model('Album', AlbumSchema);
+
+module.exports = Album;
