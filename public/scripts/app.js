@@ -41,10 +41,26 @@ $(document).ready(function() {
     var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"
     console.log('id',id);
     $('#songModal').data('album-id', id);
-    $('#songModal').modal('show')
+    $('#songModal').modal('show');
 });
 
+  $('#songModal').on('click', '#saveSong', function(el) {
+    console.log('saveSong clicked!');
+    handleNewSongSubmit(e);
+  })
+
 });
+
+function handleNewSongSubmit(e) {
+  e.preventDefault();
+  $("#saveSong").on("show.bs.modal", function(event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data("album-id");
+    console.log(recipient);
+    // var modal = $(this);
+
+  })
+}
 
 function onSuccess(json) {
   json.forEach(function(album,i) {
