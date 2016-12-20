@@ -39,8 +39,9 @@ $(document).ready(function() {
 });
 
 function onSuccess(json) {
-  json.forEach(function(album) {
+  json.forEach(function(album,i) {
     console.log(album);
+    var song = album.songs[i].name;
     renderAlbum(album);
   });
 }
@@ -62,6 +63,7 @@ function renderAlbum(albumInput) {
   console.log('rendering album:', albumInput);
 
   var albumHtml = template({ album: albumInput});
+
   $albumsList.append(albumHtml);
 
 }
