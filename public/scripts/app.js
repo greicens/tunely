@@ -23,6 +23,19 @@ $(document).ready(function() {
     error: onError
   });
 
+  $("#newAlbumForm").on("submit", function(target) {
+    target.preventDefault();
+    console.log("new album serialized", $(this).serialize());
+
+    $.ajax({
+      method: 'POST',
+      url: 'api/albums',
+      data: $(this).serialize(),
+      success: newAlbumSuccess,
+      error: newAlbumError
+    });
+  });
+
 });
 
 function onSuccess(json) {
@@ -34,6 +47,14 @@ function onSuccess(json) {
 
 function onError(err) {
     console.log(err);
+}
+
+function newAlbumSuccess(json) {
+  console.log("album created" + json);
+}
+
+function newAlbumError(err) {
+  console.log(err);
 }
 
 // this function takes a single album and renders it to the page

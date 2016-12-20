@@ -8,6 +8,7 @@ var app = express();
 
 //what does this do?
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function (req, res){
   res.sendFile('views/index.html',{root: __dirname});
@@ -16,6 +17,8 @@ app.get('/', function (req, res){
 app.get('/api', controllers.api.index);
 
 app.get('/api/albums', controllers.albums.index);
+
+app.post('/api/albums', controllers.albums.create);
 
 app.listen(process.env.PORT || 3000, function(){
   console.log('Express server is up and running on http://localhost:3000/');
