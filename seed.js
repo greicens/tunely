@@ -51,7 +51,7 @@ sampleSongs.push({ name: 'Tight Rope',
                    trackNumber: 7
                  });
 
-albumList.forEach(function (album){
+albumsList.forEach(function (album){
   album.songs = sampleSongs;
 })
 
